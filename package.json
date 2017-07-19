@@ -15,6 +15,7 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
+    "firebase-tools": "^3.9.1",
     "gzip-size": "^3.0.0"
   }
 }
