@@ -1,9 +1,9 @@
 var fs = require("fs");
 var gzipSize = require("gzip-size");
 var Readable = require("stream").Readable;
-var goal = 50000;
+var goal = 10000;
 
-var pth = process.cwd() + "/500k.js";
+var pth = process.cwd() + "/10k.js";
 
 var makeText = function(c){
   return `var a${c} = 11;\n`;
