@@ -1,9 +1,8 @@
 var fs = require("fs");
-var gzipSize = require("gzip-size");
 var Readable = require("stream").Readable;
-var goal = 10000;
+var goal = 10 << 20; // 10mb
 
-var pth = process.cwd() + "/10k.js";
+var pth = process.cwd() + "/ff.js";
 
 var makeText = function(c){
   return `var a${c} = 11;\n`;
@@ -16,13 +15,15 @@ function next() {
   readStr(makeText(++count)).pipe(w);
 
   w.on("close", function(){
-    var s = gzipSize.stream();
-    fs.createReadStream(pth).pipe(s);
-    s.on("gzip-size", function(size){
-      if(size < goal) {
-        next();
-      }
-    });
+		fs.stat(pth, function(err, stats){
+			if(err) {
+				return console.error("oh no", err);
+			}
+
+			if(stats.size < goal) {
+				next();
+			}
+		});
   });
 }
 
