@@ -13,6 +13,7 @@
     "compression": "^1.7.0",
     "donejs-spdy": "^3.4.7",
     "express": "^4.15.3",
+    "throttle": "^1.0.3",
     "yargs": "^8.0.2"
   },
   "devDependencies": {
